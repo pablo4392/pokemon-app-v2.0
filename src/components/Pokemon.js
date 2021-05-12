@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import PokemonItem from "./PokemonItem";
 
-const Pokemon = ({picUrl, pokeName, pokeType}) => {
+const Pokemon = ({pokeColor, picUrl, pokeName, pokeType}) => {
     const [pokemon, setPokemon] = useState(null);
 
     useEffect(()=> {
@@ -14,7 +14,7 @@ const Pokemon = ({picUrl, pokeName, pokeType}) => {
   
 
     return (
-        <PokemonItem urlSprite={pokemon} name={pokeName} type={pokeType}/>
+        <PokemonItem cardColor={pokeColor} urlSprite={pokemon} name={pokeName} type={pokeType}/>
     )
 }
 

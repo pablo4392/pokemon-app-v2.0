@@ -1,8 +1,8 @@
 import "./PokemonItem.css";
 
-const PokemonItem = ({urlSprite, name, type}) => {
+const PokemonItem = ({cardColor, urlSprite, name, type}) => {
     return(
-        <div className="poke-card">
+        <div className="poke-card" style={{background: cardColor }}>
             <img className="picture" src={urlSprite} alt={name} />
             <div className="info">
                 <h3 className="name">{name}</h3>
