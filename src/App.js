@@ -21,6 +21,10 @@ function App() {
   }, [query]);
 
   useEffect(() => {
+    console.log(pokes)
+  }, [pokes])
+
+  useEffect(() => {
     switch(type) {
       case 'normal': setPokeColor('#e36bae')
       break;
@@ -28,7 +32,7 @@ function App() {
       break;
       case 'flying': setPokeColor('#51c4d3')
       break;
-      case 'poison': setPokeColor('#440a67')
+      case 'poison': setPokeColor('#52057b')
       break;
       case 'ground': setPokeColor('#966c3b')
       break;
@@ -58,8 +62,9 @@ function App() {
       break;
       case 'fairy': setPokeColor('#f14668')
       break;
+      default: setPokeColor('')
     }
-  }, [pokes]);
+  }, [type]);
 
   const handleSelectPokemon = (value) => {
     setQuery(value)
