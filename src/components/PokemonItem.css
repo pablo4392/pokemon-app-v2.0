@@ -1,0 +1,28 @@
+.poke-card {
+    margin: 20px 0;
+    height: max-content;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.picture {
+    height: 120px;
+    width: 120px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name {
+    margin: 3px 0;
+}
+
+.type {
+    margin: 0;
+}

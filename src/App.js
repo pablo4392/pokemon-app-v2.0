@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Pokemon from './components/Pokemon';
+import Search from './components/Search';
 
 function App() {
+  const [type, setType] = useState(null);
+  const [query, setQuery] = useState("");
+  const [pokes, setPokes] = useState([]);
+
+  useEffect(() =>{
+    if(query) {
+      const promise = axios(`https://pokeapi.co/api/v2/type/${query}`);
+      promise.then((response) => {
+        setType(response.data.name)
+        setPokes(response.data.pokemon.slice(0, 10));
+      })
+    }
+  }, [query]);
+
+  useEffect(() => {
+  }, [pokes]);
+
+  const handleSelectPokemon = (value) => {
+    setQuery(value)
+  }
+
+  const pokeArr = pokes.map((value) => (
+    <Pokemon
+      key={value.pokemon.name} 
+      picUrl={value.pokemon.url} 
+      pokeName={value.pokemon.name.toUpperCase()} 
+      pokeType={type} />
+  ))
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search handleType={handleSelectPokemon} />
+      {pokes.length > 0 && pokeArr}
     </div>
   );
 }
