@@ -16,14 +16,10 @@ function App() {
       const promise = axios(`https://pokeapi.co/api/v2/type/${query}`);
       promise.then((response) => {
         setType(response.data.name);
-        setPokes(response.data.pokemon.slice(0, `${amount}`));
+        setPokes(response.data.pokemon.slice(0, amount));
       })
     }
   }, [query, amount]);
-
-  useEffect(() => {
-    console.log(pokes)
-  }, [pokes])
 
   useEffect(() => {
     switch(type) {
@@ -65,11 +61,15 @@ function App() {
       break;
       default: setPokeColor('')
     }
-  }, [type]);
+  }, [type, pokes]);
 
-  const handleSelectPokemon = (valueType, valueAmount) => {
+  const findPokemonType = (valueType, valueAmount) => {
     setQuery(valueType)
     setAmount(valueAmount)
+  }
+
+  const findPokemonName = (valueName) => {
+    alert("Estamos trabajando")
   }
 
   const handleReset = () => {
@@ -90,7 +90,7 @@ function App() {
   
   return (
     <div className="App">
-      <Control handleSearch={handleSelectPokemon} handleClear={handleReset} />
+      <Control handleSearchType={findPokemonType} handleSearchName={findPokemonName} handleClear={handleReset} />
       {pokes.length > 0 && pokeArr}
     </div>
   );

@@ -1,11 +1,14 @@
 .poke-card {
     margin: 20px;
+    padding: 10px;
     padding-bottom: 30px;
+    display: flex;
 }
 
 .banner {
     height: 55px;
-    width: 285px;
+    padding: 0 10px;
+    /* width: 300px; */
     display: flex;
     justify-content: space-around;
     border-radius: 20px;
