@@ -1,9 +1,13 @@
 .poke-card {
-    margin: 20px 0;
-    height: max-content;
-    width: 260px;
+    margin: 20px;
+    padding-bottom: 30px;
+}
+
+.banner {
+    height: 55px;
+    width: 285px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: 20px;
 }
 
@@ -15,7 +19,6 @@
 .info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     color: #fff;
 }
 

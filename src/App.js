@@ -2,23 +2,24 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Pokemon from './components/Pokemon';
-import Search from './components/Search';
+import Control from './inputs/Control';
 
 function App() {
   const [type, setType] = useState(null);
   const [query, setQuery] = useState("");
   const [pokes, setPokes] = useState([]);
-  const [pokeColor, setPokeColor] = useState("#eeebdd");
+  const [pokeColor, setPokeColor] = useState("");
+  const [amount, setAmount] = useState("")
 
   useEffect(() =>{
     if(query) {
       const promise = axios(`https://pokeapi.co/api/v2/type/${query}`);
       promise.then((response) => {
-        setType(response.data.name)
-        setPokes(response.data.pokemon.slice(0, 10));
+        setType(response.data.name);
+        setPokes(response.data.pokemon.slice(0, `${amount}`));
       })
     }
-  }, [query]);
+  }, [query, amount]);
 
   useEffect(() => {
     console.log(pokes)
@@ -66,8 +67,16 @@ function App() {
     }
   }, [type]);
 
-  const handleSelectPokemon = (value) => {
-    setQuery(value)
+  const handleSelectPokemon = (valueType, valueAmount) => {
+    setQuery(valueType)
+    setAmount(valueAmount)
+  }
+
+  const handleReset = () => {
+    setType(null);
+    setQuery("")
+    setPokes([])
+    setAmount("")
   }
 
   const pokeArr = pokes.map((value) => (
@@ -81,7 +90,7 @@ function App() {
   
   return (
     <div className="App">
-      <Search handleType={handleSelectPokemon} />
+      <Control handleSearch={handleSelectPokemon} handleClear={handleReset} />
       {pokes.length > 0 && pokeArr}
     </div>
   );

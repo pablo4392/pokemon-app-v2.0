@@ -1,0 +1,55 @@
+.control {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.select-twice {
+    display: flex;
+    flex-direction: column;
+}
+
+.select {
+    padding: 5px;
+    width: 180px;
+    background-color: #1b1717;
+    color: #eeebdd;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.select-type {
+    border-top: solid 5px #ce1212;
+    border-left: solid 5px #ce1212;
+    border-top-left-radius: 25px ;
+}
+
+.select-number {
+    border-bottom: solid 5px #ce1212;
+    border-left: solid 5px #ce1212;
+}
+
+.button-search {
+    background-color: #ce1212;
+    color:#eeebdd;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: solid 5px #ce1212;
+}
+
+.button-clear {
+    background-color: #ce1212;
+    color:#eeebdd;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: solid 5px #ce1212;
+    border-bottom-right-radius: 25px;
+}
+
+.btn:hover {
+    background-color: #eeebdd;
+    color: #ce1212;
+}
