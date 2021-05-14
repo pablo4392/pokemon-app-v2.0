@@ -2,24 +2,42 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Pokemon from './components/Pokemon';
+import UniquePokemon from './components/UniquePokemon';
 import Control from './inputs/Control';
 
 function App() {
   const [type, setType] = useState(null);
-  const [query, setQuery] = useState("");
+  const [queryType, setQueryType] = useState(null);
+  const [queryName, setQueryName] = useState(null)
   const [pokes, setPokes] = useState([]);
+  const [pokeId, setPokeId] = useState("")
+  const [pokeName, setPokeName] = useState("");
+  const [pokeSprite, setPokeSprite] = useState("");
   const [pokeColor, setPokeColor] = useState("");
-  const [amount, setAmount] = useState("")
+  const [amount, setAmount] = useState("");
+
+  useEffect(() => {
+    if(queryName) {
+      const promise = axios(`https://pokeapi.co/api/v2/pokemon/${queryName}`)
+      promise.then((response) => {
+        console.log(response.data)
+        setPokeId(response.data.id)
+        setPokeName(response.data.name)
+        setPokeSprite(response.data.sprites.other.["official-artwork"].front_default)
+        setType(response.data.types[0].type.name)
+      })
+    }
+  }, [queryName])
 
   useEffect(() =>{
-    if(query) {
-      const promise = axios(`https://pokeapi.co/api/v2/type/${query}`);
+    if(queryType) {
+      const promise = axios(`https://pokeapi.co/api/v2/type/${queryType}`);
       promise.then((response) => {
         setType(response.data.name);
         setPokes(response.data.pokemon.slice(0, amount));
       })
     }
-  }, [query, amount]);
+  }, [queryType, amount]);
 
   useEffect(() => {
     switch(type) {
@@ -64,17 +82,18 @@ function App() {
   }, [type, pokes]);
 
   const findPokemonType = (valueType, valueAmount) => {
-    setQuery(valueType)
+    setQueryType(valueType)
     setAmount(valueAmount)
   }
 
   const findPokemonName = (valueName) => {
-    alert("Estamos trabajando")
+    setQueryName(valueName)
   }
 
   const handleReset = () => {
     setType(null);
-    setQuery("")
+    setQueryType(null)
+    setQueryName(null)
     setPokes([])
     setAmount("")
   }
@@ -92,6 +111,15 @@ function App() {
     <div className="App">
       <Control handleSearchType={findPokemonType} handleSearchName={findPokemonName} handleClear={handleReset} />
       {pokes.length > 0 && pokeArr}
+      {queryName &&
+        <UniquePokemon 
+          id={pokeId} 
+          name={pokeName.toUpperCase()}
+          type={type}
+          urlSprite={pokeSprite}
+          cardColor={pokeColor}
+        />
+      }
     </div>
   );
 }

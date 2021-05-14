@@ -41,7 +41,7 @@ const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
                 </>
             ) : (
                 <>
-                    <input className="input-search" onChange={(e) => setHandleName(e.target.value)} />
+                    <input className="input-search" onChange={(e) => setHandleName(e.target.value.toLowerCase())} />
                     <button className="btn" onClick={() => handleSearchName(handleName)} >
                             Search
                     </button>
