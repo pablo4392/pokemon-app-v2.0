@@ -1,33 +1,65 @@
-.poke-card {
+.arr-poke-card {
     margin: 20px;
-    padding: 10px;
-    padding-bottom: 30px;
+    padding: 5px 18px;
     display: flex;
+    border-radius: 25px;
 }
 
-.banner {
-    height: 55px;
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 20px;
+.arr-picture {
+    height: 150px;
+    width: 150px;
 }
 
-.picture {
-    height: 120px;
-    width: 120px;
-}
-
-.info {
+.arr-info {
     display: flex;
     flex-direction: column;
     color: #fff;
 }
 
-.name {
+.arr-name {
     margin: 3px 0;
+    font-size: 30px;
 }
 
-.type {
+.arr-type {
     margin: 0;
+    font-size: 18px;
+}
+
+.panel-arr-buttons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.arr-shiny {
+    width: 90px;
+    padding: 5px;
+    font-size: 18px;
+    background-color: #0c4271;
+    color: #f6e5e9;
+    border: solid #000000;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.arr-shiny:hover {
+    background-color: #000000;
+    color: #0c4271;
+}
+
+.arr-position {
+    width: 90px;
+    padding: 5px;
+    font-size: 18px;
+    background-color: #0c4271;
+    color: #f6e5e9;
+    border: solid #000000;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.arr-position:hover {
+    background-color: #000000;
+    color: #0c4271;
 }

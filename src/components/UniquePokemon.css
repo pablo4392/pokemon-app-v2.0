@@ -6,16 +6,11 @@
 }
 
 .banner {
-    height: 75px;
+    height: 70px;
     padding: 0 25px;
     display: flex;
     justify-content: space-around;
     border-radius: 20px;
-}
-
-.name {
-    margin: 0;
-    font-size: 30px;
 }
 
 .sprite {
@@ -30,11 +25,41 @@
     color: #fff;
 }
 
-.stats {
-    color: #000
+.unique-name {
+    margin: 0;
+    font-size: 30px;
 }
 
-/* helpers */
-.no-margin {
+.unique-type {
     margin: 0;
+    font-size: 18px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stats-title {
+    margin: 0;
+    margin-top: 8px;
+    color: black;
+    text-align: center;
+}
+
+.stat-label {
+    color: #0c4271;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.meter-stat {
+    width: 200px;
+    height: 20px;
+}
+
+.stat-value {
+    color: #0c4271;
+    font-size: 18px;
 }
