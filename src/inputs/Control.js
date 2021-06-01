@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./InputStyles.css";
 
 const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
@@ -6,6 +7,20 @@ const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
     const [handleAmount, setHandleAmount] = useState("");
     const [handleName, setHandleName] = useState("");
     const [isType, setIsType] = useState(false);
+    const [types, setTypes] = useState([]);
+
+    useEffect(() => {
+        const promise = axios("https://pokeapi.co/api/v2/type")
+        if(types) {
+            promise.then(resp => {
+                setTypes(resp.data.results)
+            })
+        }
+    }, [types])
+
+    const typesArr = types.map(value => (
+        <option key={value.name} value={value.name}>{value.name.toUpperCase()}</option>
+    ))
 
     return(
         <div className="control">
@@ -13,25 +28,8 @@ const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
                 <>
                     <div className="select-twice">
                         <select className="select select-type" onChange={(e) => setHandleType(e.target.value)}>
-                            <option selected defaultValue >Type</option>
-                            <option value='1'>Normal</option>
-                            <option value='2'>Fighting</option>
-                            <option value='3'>Flying</option>
-                            <option value='4'>Poison</option>
-                            <option value='5'>Ground</option>
-                            <option value='6'>Rock</option>
-                            <option value='7'>Bug</option>
-                            <option value='8'>Ghost</option>
-                            <option value='9'>Steel</option>
-                            <option value='10'>Fire</option>
-                            <option value='11'>Water</option>
-                            <option value='12'>Grass</option>
-                            <option value='13'>Electric</option>
-                            <option value='14'>Psychic</option>
-                            <option value='15'>Ice</option>
-                            <option value='16'>Dragon</option>
-                            <option value='17'>Dark</option>
-                            <option value='18'>Fairy</option>
+                            <option selected >Type</option>
+                            {typesArr}
                         </select>
                         <input type="number" className="select select-number" onChange={(e) => setHandleAmount(e.target.value)} />
                     </div>
