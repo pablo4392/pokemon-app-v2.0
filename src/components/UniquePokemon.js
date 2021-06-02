@@ -13,14 +13,21 @@ const UniquePokemon = ({
     spDef,
     speed
 }) => {
+
+    const typesArr = type.map(value => (
+        <h5 key={value.type.name} className="unique-type" >{value.type.name}</h5>
+      ))
+
     return(
-        <div className="poke-card">
+        <div className="unique-pokemon">
             <div className="banner" style={{background: cardColor }}>
                 <img className="sprite" src={urlSprite} alt={name} />
                 <div className="info">
                     <div>
                         <h1 className="unique-name">#{id} {name}</h1>
-                        <h2 className="unique-type">{type}</h2>
+                        <div className="unique-types">
+                            {typesArr}
+                        </div>
                     </div>
                     <div className="stats">
                         <h2 className="stats-title">Stats</h2>

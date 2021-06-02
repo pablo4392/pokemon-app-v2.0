@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "./InputStyles.css";
 
 const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
@@ -19,7 +21,7 @@ const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
     }, [types])
 
     const typesArr = types.map(value => (
-        <option key={value.name} value={value.name}>{value.name.toUpperCase()}</option>
+        <option key={value.name} value={value.name}>{value.name}</option>
     ))
 
     return(
@@ -28,20 +30,20 @@ const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
                 <>
                     <div className="select-twice">
                         <select className="select select-type" onChange={(e) => setHandleType(e.target.value)}>
-                            <option selected >Type</option>
+                            <option selected value="0" >Type</option>
                             {typesArr}
                         </select>
                         <input type="number" className="select select-number" onChange={(e) => setHandleAmount(e.target.value)} />
                     </div>
                     <button className="btn" onClick={() => handleSearchType(handleType, handleAmount) }>
-                        Search
+                        <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </>
             ) : (
                 <>
                     <input className="input-search" onChange={(e) => setHandleName(e.target.value.toLowerCase())} />
                     <button className="btn" onClick={() => handleSearchName(handleName)} >
-                            Search
+                        <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </>
             )}

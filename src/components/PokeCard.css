@@ -1,0 +1,99 @@
+.poke-card {
+    width: 330px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+.header-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: double #f6e5e9;
+}
+
+.picture-card {
+    height: 150px;
+    width: 150px;
+}
+
+.header-card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-name {
+    margin: 3px 0;
+    font-size: 22px;
+    color: #f6e5e9;
+}
+
+.panel-card-buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-button-shiny {
+    width: 65px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #cf0000;
+    color: #f6e5e9;
+    border: solid 2px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.card-button-shiny:hover {
+    background-color: #000000;
+    color: #f6e5e9;
+}
+
+.card-button-position {
+    width: 55px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #cf0000;
+    color: #f6e5e9;
+    border: solid 2px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.card-button-position:hover {
+    background-color: #000000;
+    color: #f6e5e9;
+}
+
+.card-dimensions {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-label {
+    margin: 0;
+    color: #f6e5e9;
+}
+
+.card-array-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.card-item {
+    width: max-content;
+    margin: 3px 0;
+    padding: 2px 6px;
+    background-color: #393e46;
+    color: #f6e5e9;
+    border-radius: 8px;
+}

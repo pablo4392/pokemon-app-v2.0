@@ -1,0 +1,25 @@
+.pokedex-banner {
+    background-color: #cf0000;
+    height: 170px;
+    border-bottom: solid 8px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poke-logo {
+    width: 410px;
+    height: 210px;
+}
+
+.unique-poke {
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.grid-pokes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

@@ -11,7 +11,6 @@ const Pokemon = ({pokeColor, picUrl, pokeName, pokeType}) => {
     useEffect(()=> {
         const promise = axios(picUrl)
         promise.then((response) => {
-            console.log(response.data)
             setPokemonFront(response.data.sprites.front_default)
             setPokemonBack(response.data.sprites.back_default)
             setShinyFront(response.data.sprites.front_shiny)

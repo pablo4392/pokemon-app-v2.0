@@ -1,4 +1,4 @@
-.poke-card {
+.unique-pokemon {
     margin: 20px;
     padding: 10px;
     padding-bottom: 30px;
@@ -6,7 +6,7 @@
 }
 
 .banner {
-    height: 70px;
+    height: 75px;
     padding: 0 25px;
     display: flex;
     justify-content: space-around;
@@ -30,9 +30,18 @@
     font-size: 30px;
 }
 
+.unique-types {
+    display: flex;
+}
+
 .unique-type {
-    margin: 0;
+    width: min-content;
+    background-color: #dddddd;
+    color: #222831;
+    padding: 2px 7px;
+    margin: 0 10px;
     font-size: 18px;
+    border-radius: 20px;
 }
 
 .stats {
