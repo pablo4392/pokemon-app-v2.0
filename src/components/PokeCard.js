@@ -117,8 +117,8 @@ const PokeCard = ({pokeUrl}) => {
             </div>
             <div className="body-card">
                 <div className="card-dimensions">
-                    <h4 className="card-label">Weight: {weight/10} Kg.</h4>
                     <h4 className="card-label">Height: {height/10} Mts.</h4>
+                    <h4 className="card-label">Weight: {weight/10} Kg.</h4>
                 </div>
                 <div>
                     <h4 className="card-label">Abilities:</h4>

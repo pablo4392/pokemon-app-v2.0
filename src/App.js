@@ -1,9 +1,12 @@
+import {HashRouter as Router} from "react-router-dom";
 import Pokedex from './Pokedex';
 
 function App() {
   
   return (
-    <Pokedex />
+    <Router>
+      <Pokedex />
+    </Router>
   );
 }
 

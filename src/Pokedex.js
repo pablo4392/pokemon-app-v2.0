@@ -13,17 +13,22 @@ const Pokedex = () => {
   const [amount, setAmount] = useState("");
   const [pokeColor, setPokeColor] = useState("");
   const [pokes, setPokes] = useState([]);
-  const [pokeId, setPokeId] = useState("")
+  const [pokeId, setPokeId] = useState("");
   const [pokeName, setPokeName] = useState("");
-  const [colorType, setColorType] = useState("")
+  const [colorType, setColorType] = useState("");
   const [type, setType] = useState([]);
   const [pokeSprite, setPokeSprite] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [hp, setHp] = useState("");
   const [atk, setAtk] = useState("");
   const [def, setDef] = useState("");
   const [spAtk, setSpAtk] = useState("");
   const [spDef, setSpDef] = useState("");
   const [speed, setSpeed] = useState("");
+  const [abilities, setAbilities] = useState([]);
+  const [moves, setMoves] = useState([])
+  const [locations, setLocations] = useState("")
 
   useEffect( () => {
     if(allPokemon){
@@ -41,13 +46,18 @@ const Pokedex = () => {
         setPokeName(response.data.name);
         setPokeSprite(response.data.sprites.other["official-artwork"].front_default);
         setColorType(response.data.types[0].type.name);
-        setType(response.data.types)
-        setHp(response.data.stats[0].base_stat)
-        setAtk(response.data.stats[1].base_stat)
-        setDef(response.data.stats[2].base_stat)
-        setSpAtk(response.data.stats[3].base_stat)
-        setSpDef(response.data.stats[4].base_stat)
-        setSpeed(response.data.stats[5].base_stat)
+        setType(response.data.types);
+        setHeight(response.data.height);
+        setWeight(response.data.weight)
+        setHp(response.data.stats[0].base_stat);
+        setAtk(response.data.stats[1].base_stat);
+        setDef(response.data.stats[2].base_stat);
+        setSpAtk(response.data.stats[3].base_stat);
+        setSpDef(response.data.stats[4].base_stat);
+        setSpeed(response.data.stats[5].base_stat);
+        setAbilities(response.data.abilities)
+        setMoves(response.data.moves)
+        setLocations(response.data.location_area_encounters)
       })
     }  
   }, [queryName]);
@@ -145,19 +155,24 @@ const Pokedex = () => {
         handleClear={handleReset} 
       />
       {queryName ? (
-        <div>
+        <div className="pokedex-container">
           <UniquePokemon 
             id={pokeId} 
             name={pokeName.toUpperCase()}
             type={type}
             urlSprite={pokeSprite}
             cardColor={pokeColor}
+            height={height/10}
+            weight={weight/10}
             hp={hp}
             atk={atk}
             def={def}
             spAtk={spAtk}
             spDef={spDef}
             speed={speed}
+            abilities={abilities}
+            moves={moves}
+            locations={locations}
           />
         </div>
       ):(
