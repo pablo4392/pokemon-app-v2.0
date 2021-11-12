@@ -32,7 +32,7 @@ const Pokedex = () => {
 
   useEffect( () => {
     if(allPokemon){
-      Services.allPokes().then(response => {
+      Services.allPokes(12,0).then(response => {
         setAllPokemon(response.data.results)
       })
     }
@@ -41,7 +41,6 @@ const Pokedex = () => {
   useEffect(() => {
     if(queryName){
       Services.uniquePoke(queryName).then(response => {
-        console.log(response.data)
         setPokeId(response.data.id);
         setPokeName(response.data.name);
         setPokeSprite(response.data.sprites.other["official-artwork"].front_default);
@@ -73,7 +72,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     switch(colorType) {
-      case 'normal': setPokeColor('#e36bae')
+      case 'normal': setPokeColor('#d99879')
       break;
       case 'fighting': setPokeColor('#e40017')
       break;
@@ -122,14 +121,6 @@ const Pokedex = () => {
     setQueryName(valueName)
   }
 
-  const handleReset = () => {
-    setType(null);
-    setQueryType(null)
-    setQueryName(null)
-    setPokes([])
-    setAmount("")
-  }
-
   const allPokes = allPokemon.map(value => (
     <PokeCard
       key={value.name}
@@ -151,8 +142,7 @@ const Pokedex = () => {
       </div>
       <Control
         handleSearchType={findPokemonType} 
-        handleSearchName={findPokemonName} 
-        handleClear={handleReset} 
+        handleSearchName={findPokemonName}
       />
       {queryName ? (
         <div className="pokedex-container">

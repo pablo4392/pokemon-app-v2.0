@@ -1,58 +1,47 @@
-import axios from "axios";
+import "./control.css";
+import Services from '../service/services';
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import "./InputStyles.css";
+import { faArrowAltCircleLeft, faArrowCircleRight, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
 
-const Control = ({ handleSearchType, handleSearchName, handleClear }) => {
+const Control = ({handleSearchName}) => {
     const [handleType, setHandleType] = useState("");
-    const [handleAmount, setHandleAmount] = useState("");
     const [handleName, setHandleName] = useState("");
-    const [isType, setIsType] = useState(false);
     const [types, setTypes] = useState([]);
 
     useEffect(() => {
-        const promise = axios("https://pokeapi.co/api/v2/type")
-        if(types) {
-            promise.then(resp => {
-                setTypes(resp.data.results)
-            })
-        }
-    }, [types])
+        Services.pokemonTypes().then(resp => {
+            setTypes(resp.data.results)
+        })
+    }, []);
 
     const typesArr = types.map(value => (
-        <option key={value.name} value={value.name}>{value.name}</option>
-    ))
+        <option key={value.name} value={value.name}>{value.name.toUpperCase()}</option>
+    ));
 
     return(
         <div className="control">
-            {isType ? (
-                <>
-                    <div className="select-twice">
-                        <select className="select select-type" onChange={(e) => setHandleType(e.target.value)}>
-                            <option selected value="0" >Type</option>
-                            {typesArr}
-                        </select>
-                        <input type="number" className="select select-number" onChange={(e) => setHandleAmount(e.target.value)} />
-                    </div>
-                    <button className="btn" onClick={() => handleSearchType(handleType, handleAmount) }>
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                </>
-            ) : (
-                <>
-                    <input className="input-search" onChange={(e) => setHandleName(e.target.value.toLowerCase())} />
-                    <button className="btn" onClick={() => handleSearchName(handleName)} >
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                </>
-            )}
-            <button className="btn" onClick={() => setIsType(!isType)} >
-                {isType ? "Find by name" : "Find by type"}
-            </button>
-            <button className="btn button-clear" onClick={() => handleClear()} >
-                Clear
-            </button>
+            <div className="pokemon-finder">
+                <input placeholder="Write a name" className="input-search" onChange={(e) => setHandleName(e.target.value.toLowerCase())} />
+                <button className="finder-button" onClick={() => handleSearchName(handleName)} >
+                    <FontAwesomeIcon icon={faSearch} />
+                </button>
+            </div>
+            <div className="pagination-btn">
+                <button className="btn-pag btn-left">
+                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                </button>
+                <button className="btn-pag btn-right">
+                    <FontAwesomeIcon icon={faArrowCircleRight} />
+                </button>
+            </div>
+            <div className="types-control">
+                <select className="select-type" onChange={(e) => setHandleType(e.target.value)}>
+                    <option disabled selected> Choos a type </option>
+                    {typesArr}
+                </select>
+            </div>
         </div>
     )
 }

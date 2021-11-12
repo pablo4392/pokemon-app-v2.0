@@ -14,13 +14,13 @@ const PokeCard = ({pokeUrl}) => {
     const [shinyBack, setShinyBack] = useState("");
     const [height, setHeight] = useState("");
     const [weight, setWeight] = useState("");
-    const [abilities, setAbilities] = useState([]);
     const [changeShiny, setChangeShiny] = useState(true);
     const [isFront, setIsFront] = useState(true);
 
     useEffect(() => {
         if(pokeUrl) {
             axios(pokeUrl).then(res => {
+                console.log(res)
                 setId(res.data.id);
                 setName(res.data.name);
                 setTypes(res.data.types);
@@ -31,14 +31,13 @@ const PokeCard = ({pokeUrl}) => {
                 setShinyBack(res.data.sprites.back_shiny);
                 setHeight(res.data.height);
                 setWeight(res.data.weight);
-                setAbilities(res.data.abilities);
             })
         }
     }, [pokeUrl])
 
     useEffect(() => {
         switch(colorType) {
-          case 'normal': setPokeColor('#e36bae')
+          case 'normal': setPokeColor('#d99879')
           break;
           case 'fighting': setPokeColor('#e40017')
           break;
@@ -82,10 +81,6 @@ const PokeCard = ({pokeUrl}) => {
         <h4 key={val.type.name} className="card-item" style={{background: "#dddddd", color: "#222831"}}>{val.type.name}</h4>
     ));
 
-    const abilitiesArray = abilities.map( val => (
-        <h4 key={val.ability.name} className="card-item">{val.ability.name}</h4>
-    ));
-
     return(
         <div className="poke-card" style={{background: pokeColor }} >
             <div className="header-card">
@@ -115,15 +110,9 @@ const PokeCard = ({pokeUrl}) => {
                     </div>
                 </div>
             </div>
-            <div className="body-card">
-                <div className="card-dimensions">
-                    <h4 className="card-label">Height: {height/10} Mts.</h4>
-                    <h4 className="card-label">Weight: {weight/10} Kg.</h4>
-                </div>
-                <div>
-                    <h4 className="card-label">Abilities:</h4>
-                    <div className="card-array-items"> {abilitiesArray} </div>
-                </div>
+            <div className="card-dimensions">
+                <h4 className="card-label">Height: {height/10} Mts.</h4>
+                <h4 className="card-label">Weight: {weight/10} Kg.</h4>
             </div>
         </div>
     )

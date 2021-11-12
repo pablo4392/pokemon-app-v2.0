@@ -1,4 +1,3 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import "./UniquePokemon.css";
 import {Link, Route, Switch} from "react-router-dom"
 import Abilities from "./subComponents/Abilities";

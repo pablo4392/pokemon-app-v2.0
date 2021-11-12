@@ -1,0 +1,103 @@
+.control {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* FINDER CONTROL  */
+.pokemon-finder {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.input-search {
+    width: 150px;
+    padding: 7px;
+    background-color: var(--base-black-color);
+    color: var(--base-white-color);
+    border: solid 5px var(--base-red-color);
+    font-size: 18px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.finder-button {
+    background-color: var(--base-red-color);
+    color: var(--base-white-color);
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border: solid 5px var(--base-red-color);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.finder-button:hover {
+    background-color: var(--base-white-color);
+    color: var(--base-red-color);
+}
+
+/* PAGINATION BUTTONS  */
+.pagination-btn {
+    margin: 20px;
+}
+
+.btn-pag {
+    height: 100%;
+    width: 60px;
+    background-color: var(--base-black-color);   
+    color: var(--base-white-color); 
+    border: solid 5px var(--base-red-color);
+    font-size: 25px;
+}
+
+.btn-right {
+    border-left: 0;
+    border-top-right-radius: 15px ;
+    border-bottom-right-radius: 15px;
+}
+
+.btn-right:hover {
+    background-color: var(--base-white-color);
+    color: var(--base-red-color);
+}
+
+.btn-left {
+    border-right: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.btn-left:hover {
+    background-color: var(--base-white-color);
+    color: var(--base-red-color);
+}
+
+/* CONTROL TYPES */
+.types-control {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.select-type {
+    width: min-content;
+    padding: 7px;
+    background-color: var(--base-black-color);
+    font-size: 18px;
+    color: var(--base-white-color);
+    border: solid 5px var(--base-red-color);
+    border-radius: 15px;
+}
+
+.select-number {
+    width: 115px;
+    background-color: var(--base-black-color);
+    font-size: 18px;
+    color: var(--base-white-color);
+    border: solid 5px var(--base-red-color);
+    border-left: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}

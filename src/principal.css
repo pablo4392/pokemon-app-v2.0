@@ -1,0 +1,53 @@
+.principal-page {
+    height: 100vh;
+    background-image: url('https://i.pinimg.com/originals/fc/a1/a3/fca1a32f5f12f9b281df37a44e0ddc6a.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(35, 30, 30, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 200px;
+    height: 100px;
+}
+
+.p-label {
+    margin: 8px;
+    font-size: 35px;
+    color: #fff5fd;
+}
+
+.p-input {
+    width: 130px;
+    height: 30px;
+    background-color: #231e23;
+    border: solid 5px #cf0000;
+    color: #eeebdd;
+    font-size: 20px;
+}
+
+.p-button {
+    height: 42px;
+    background-color: #cf0000;
+    border: solid 5px #cf0000;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    color: #eeebdd;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.p-button:hover {
+    background-color: #eeebdd;
+    color: #cf0000;
+}
